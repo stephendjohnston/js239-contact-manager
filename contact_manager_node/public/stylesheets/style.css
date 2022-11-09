@@ -1,0 +1,146 @@
+@import url("whitespace-reset.css");
+
+header {
+  height: 150px;
+  color: #FFF;
+  background-color: #492F70;
+  text-align: center;
+}
+
+h1 {
+  padding-top: 55px;
+  font-size: 28px;
+}
+
+main {
+  overflow: hidden;
+}
+
+footer {
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  background-color: #F2F2F2;
+  top: 90vh;
+  position: absolute;
+  bottom: 0;
+}
+
+footer p {
+  padding-top: 30px;
+}
+
+#add-search-container {
+  height: 75px;
+  text-align: center;
+  background-color: #F2F2F2;
+}
+
+#add-contact, #search-contacts {
+  margin: 15px 10px 0 10px;
+  padding: 10px;
+}
+
+#tags-container {
+  text-align: center;
+  padding: 15px 0;
+}
+
+#tags-container li {
+  display: inline-block;
+  margin: 5px 3px 10px 3px;
+}
+
+#contact-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#contact-list li {
+  margin: 15px;
+}
+
+.edit {
+  margin: 5px 5px 0 0;
+}
+
+#contact-form-container {
+  text-align: right;
+  margin-right: 40%;
+  animation-duration: 1.5s;
+  animation-name: slide;
+}
+
+h3 {
+  font-size: 22px;
+  padding: 15px 40px 15px 0;
+}
+
+form {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#contact-cancel {
+  margin: 10px 45px 0 10px;
+}
+
+label {
+  margin: 0 3px 5px 0;
+}
+
+form input {
+  margin: 0 0 5px 0;
+}
+
+.hide {
+  display: none;
+}
+
+#tag-error-msg {
+  color: red;
+  border: 1px solid black;
+  margin-bottom: 2px;
+  padding: 1px;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(200px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+#tags-selector-container {
+  border: 3px solid red;
+}
+
+#tags-container button {
+  text-align: center;
+  display: inline-block;
+}
+
+#tags-container input {
+  width:100px;
+  text-align: center;
+  display: inline-block;
+}
+
+#no-contacts-container {
+  text-align: center;
+}
+
+#no-contacts-container button {
+  margin: 5px;
+}
+
+#search-chars {
+  font-weight: bold;
+}
+
+#no-matches-container {
+  text-align: center;
+}

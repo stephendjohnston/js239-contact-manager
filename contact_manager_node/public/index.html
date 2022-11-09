@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact Manager</title>
+  <script src="/javascripts/handlebars.js"></script>
+  <script type="module" src="/javascripts/main.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+  <script id="contact-template" type="text/x-handlebars">
+    <li id='contact-{{id}}'>
+      <h3>{{full_name}}</h3>
+      <dl>
+        <dt>Phone Number:</dt>
+        <dd>{{phone_number}}</dd>
+        <dt>Email:</dt>
+        <dd>{{email}}</dd>
+        <dt>Tags:</dt>
+        <dd>{{tags}}</dd>
+      </dl>
+      <button id="edit-{{id}}" class="edit">Edit</button>
+      <button id="delete-{{id}}" class="delete">Delete</button>
+    </li>
+  </script>
+  <script id="contact-list-template" type="text/x-handlebars">
+    {{#each contacts}}
+    {{> contact}}
+    {{/each}}
+  </script>
+  
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+  </header>
+  <main>
+    <div id="actions-container">
+      <div id="add-search-container">
+        <button id="actions-add-contact">Add Contact</button>
+        <input type="text" name="name" id="search-contacts" placeholder="Search">
+      </div>
+      <div id="tags-container">
+        <ul id="tag-list">
+        </ul>
+        <button id="add-tag">Add Tag</button>
+        <input type="text" id="tag-input" placeholder="eg. 'work'">
+        <button id="delete-tag">Delete Tag</button>
+        <input type="text" id="tag-delete" placeholder="eg. 'work'">
+      </div>
+    </div>
+    <div class="" id="contacts-container">
+      <ul class="" id="contact-list">
+      </ul>
+    </div>
+    <div id="no-contacts-container">
+      <h3 id="message">There are no contacts.</h3>
+      <button id="main-add-contact">Add Contact</button>
+    </div>
+    <div id="no-matches-container">
+      <h3 id="no-contacts-message">There are no contacts that match with "<span id="search-chars"></span>"</h3>
+    </div>
+    <div id="contact-form-container">
+      <form id="contact-form">
+        <ul data-contact-id="">
+          <li>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="full_name" required>
+          </li>
+          <li>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          </li>
+          <li>
+            <label for="phone-number">Phone Number:</label>
+            <input type="tel" id="phone-number" name="phone_number">
+          </li>
+          <li>
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" name="tags" readonly>
+          </li>
+        </ul>
+        <div id="tag-selector-container">
+          <select name="tag-select" id="tag-selector" size="4">
+            <option value="">-- Choose Tags --</option>
+          </select>
+        </div>
+        <button id="contact-submit" type="submit">Submit</button><button id="contact-cancel">Cancel</button>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <p>Developed by Stephen Johnston</p>
+  </footer>
+</body>
+</html>
