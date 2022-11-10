@@ -1,7 +1,7 @@
 class ViewManager {
   constructor() {
     this.contactList = this.getElement('#contact-list');
-    this.templates = this.registerTemplates();
+    this.templates = this.registerHandlebars();
     this.containers = this.registerContainers();
   }
 
@@ -9,11 +9,23 @@ class ViewManager {
     return document.querySelector(selector);
   }
 
-  registerTemplates() {
+  registerHandlebars() {
     const contactScript = document.getElementById('contact-template');
     const contact = Handlebars.compile(contactScript.innerHTML);
     const contacts = Handlebars.compile(document.getElementById('contact-list-template').innerHTML);
     Handlebars.registerPartial('contact', contactScript.innerHTML);
+    Handlebars.registerHelper('formatPhoneNumber', function(phoneNumber) {
+      let first;
+      
+      if (phoneNumber.length === 11) {
+        first = `+${phoneNumber.substring(0, 1)}-${phoneNumber.substring(1, 4)}-`;
+        phoneNumber = phoneNumber.slice(1);
+      } else {
+        first = `${phoneNumber.substring(0, 3)}-`;
+      }
+
+      return first + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
+    });
 
     return {contact, contacts};
   }
@@ -97,7 +109,6 @@ class ViewManager {
     
     while (tagSelect.firstElementChild.nextElementSibling) {
       tagSelect.removeChild(tagSelect.firstElementChild.nextElementSibling);
-      console.log('hell')
     }
 
     tags.forEach(tag => {

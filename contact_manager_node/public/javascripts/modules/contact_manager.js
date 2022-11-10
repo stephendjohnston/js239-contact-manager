@@ -35,6 +35,9 @@ class ContactManager {
       let contactTags = !!tagsInput.value ? tagsInput.value.split(',') : [];
       let tagSelected = element.value;
 
+      if (!tagSelected) return;
+      
+
       if (contactTags.includes(tagSelected)) {
         let index = contactTags.indexOf(tagSelected);
         contactTags.splice(index, 1);
@@ -82,6 +85,11 @@ class ContactManager {
     if (id === 'contact-submit') {
       let form = element.closest('form');
       let json = this.formToJSON(form);
+      
+      if (!form.checkValidity()) {
+        alert('Check that all fields have valid inputs');
+        return;
+      }
 
       if (this.editContact) {
         let id = form.firstElementChild.dataset.contactId;
@@ -95,7 +103,6 @@ class ContactManager {
     }
 
     if (element.classList.contains('delete')) {
-      // delete contact
       if (confirm('Are you sure you want to delete this contact?')) {
         let contactId = element.closest('li').id.split('-')[1];
         await this.dataManager.deleteContact(contactId);
@@ -129,13 +136,11 @@ class ContactManager {
     let formData = new FormData(form);
     formData.delete('tag-select');
     let json = JSON.stringify(Object.fromEntries(formData));
-    console.log(json);
     return json;
   }
 
   validTag(tag) {
     let regex = new RegExp(/^[a-z0-9]+$/, 'i');
-    console.log(regex.test(tag));
     return regex.test(tag);
   }
 }

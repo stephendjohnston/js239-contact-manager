@@ -14,7 +14,7 @@
       <h3>{{full_name}}</h3>
       <dl>
         <dt>Phone Number:</dt>
-        <dd>{{phone_number}}</dd>
+        <dd>{{formatPhoneNumber phone_number}}</dd>
         <dt>Email:</dt>
         <dd>{{email}}</dd>
         <dt>Tags:</dt>
@@ -65,16 +65,16 @@
       <form id="contact-form">
         <ul data-contact-id="">
           <li>
-            <label for="name">Name:</label>
+            <label for="name">*Name:</label>
             <input type="text" id="name" name="full_name" required>
           </li>
           <li>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
+            <label for="email">*Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
           </li>
           <li>
-            <label for="phone-number">Phone Number:</label>
-            <input type="tel" id="phone-number" name="phone_number">
+            <label for="phone-number">*Phone Number:</label>
+            <input type="tel" id="phone-number" name="phone_number" pattern="[0-9]{10}|[0-9]{11}" placeholder="333-444-5555" required>
           </li>
           <li>
             <label for="tags">Tags:</label>
@@ -88,6 +88,9 @@
         </div>
         <button id="contact-submit" type="submit">Submit</button><button id="contact-cancel">Cancel</button>
       </form>
+      <div>
+        <p>*Fields Required</p>
+      </div>
     </div>
   </main>
   <footer>

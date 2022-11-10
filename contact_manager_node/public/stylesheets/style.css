@@ -22,7 +22,7 @@ footer {
   text-align: center;
   background-color: #F2F2F2;
   top: 90vh;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
